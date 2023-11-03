@@ -1,13 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+
+const changeState = (state, action) => {
+  switch (action.type) {
+    case "SET_DATA":
+      return { ...state, data: action.payload };
+    case "SET_ISPENDING":
+      return { ...state, isPending: action.payload };
+      case "SET_ERROR":
+        return { ...state, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export function useFetch(url) {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [isPending, setIsPending] = useState(false);
+  
+
+  const [state, dispatch] = useReducer(changeState, {
+    data: null,
+    error: null,
+    isPending: false,
+  });
 
   useEffect(() => {
     const getData = async () => {
-      setIsPending(true);
+      dispatch({ type: "SET_ISPENDING", payload: true });
       try {
         const request = await fetch(url);
         if (!request.ok) {
@@ -16,12 +33,12 @@ export function useFetch(url) {
 
         const data = await request.json();
 
-        setData(data);
-        setIsPending(false);
-        setError(null);
+        dispatch({ type: "SET_DATA", payload: data });
+        dispatch({ type: "SET_ISPENDING", payload: false });
+        dispatch({ type: "SET_ERROR", payload: null });
       } catch (error) {
-        setIsPending(false);
-        setError(error.message);
+        dispatch({ type: "SET_ISPENDING", payload: false });
+        dispatch({ type: "SET_ERROR", payload: error.message });
         console.log(error.message);
       }
     };
@@ -29,5 +46,5 @@ export function useFetch(url) {
     getData();
   }, [url]);
 
-  return { data, error, isPending };
+  return {...state};
 }

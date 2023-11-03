@@ -3,7 +3,7 @@ import Gallary from "../components/Gallary";
 import Search from "../components/Search";
 import { useFetch } from "../hooks/useFetch";
 const API =
-  "https://api.unsplash.com/search/photos?client_id=fgtelVfpmKPYzdqfkKtlwJy7n7AtYvfEP91IW2vsGrA&page=1&query=";
+  `https://api.unsplash.com/search/photos?client_id=${import.meta.env.VITE_APP_ACCESS_KEY}&page=1&query=`;
 
 function Home() {
   const [url, setUrl] = useState(API + "features");
@@ -14,7 +14,7 @@ function Home() {
   };
   return (
     <div>
-      <h1>Search Any Image: </h1>
+      <h1 className="title">Search Any Image: </h1>
       <Search setNewUrl={setNewUrl} />
       {data && <Gallary data={data} />}
       {isPending && <h1>Loading...</h1>}

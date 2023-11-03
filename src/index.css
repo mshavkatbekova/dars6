@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;800;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;800;900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700&display=swap");
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #ddf2fd;
 }
 
 ul,
@@ -27,9 +29,13 @@ ol {
 }
 
 .navbar {
+  background-color: #87c4ff;
+  border-radius: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #e0f4ff;
+  margin-bottom: 20px;
 }
 
 .navbar nav {
@@ -40,8 +46,8 @@ ol {
 .navbar a {
   text-decoration: none;
   font-weight: bold;
-  font-size: 18px;
-  color: #333;
+  font-size: 20px;
+  color: #fafafa;
 }
 
 .navbar a:hover {
@@ -63,19 +69,25 @@ form {
 }
 
 form input {
-  padding: 5px 10px;
-  font-size: 20px;
+  padding: 10px 20px;
+  font-size: 25px;
   font-family: inherit;
+  border-radius: 8px;
 }
 
 form button {
   border: 0;
-  background-color: #333;
-  color: #fff;
+  background-color: #87c4ff;
+  color: #fafafa;
   font-family: inherit;
-  padding: 5px 10px;
+  padding: 10px 20px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+.title {
+  color: #00a9ff;
 }
 
 .gallary {
@@ -88,9 +100,39 @@ form button {
   gap: 10px;
 }
 
+.author {
+  text-align: center;
+  color: #00a9ff;
+}
 img {
-  width: 100%;
+  border-radius: 5px;
+  max-width: 100%;
+  width: 600px;
   object-fit: cover;
+  object-position: center;
+}
+
+.image_and_author {
+  display: flex;
+  gap: 50px;
+}
+
+.badge {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+
+.like {
+  font-size: 25px;
+  border: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.profile_image {
+  margin-top: 50px;
+  width: 400px;
+  border-radius: 50%;
 }
 
 @media screen and (max-width: 960px) {
